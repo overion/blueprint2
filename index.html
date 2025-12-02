@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>10x10 Transparent Grid Over Fully Visible Background</title>
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #000; /* background behind image for letterboxing */
+  }
+
+  body {
+    background-image: url('1.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain; /* fit entire image inside viewport */
+  }
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+  a.grid-cell {
+    background-color: rgba(0,0,0,0); /* fully transparent */
+    border: 1px solid white; /* fully visible white borders */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    user-select: none;
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+
+  a.grid-cell:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: #fff;
+  }
+</style>
+</head>
+<body>
+
+<div class="grid-container" aria-label="Clickable grid">
+  <script>
+    const container = document.querySelector('.grid-container');
+    for(let i=1; i<=100; i++) {
+      const link = document.createElement('a');
+      link.href = `https://example.com/${i}`;
+      link.textContent = i;
+      link.className = 'grid-cell';
+      container.appendChild(link);
+    }
+  </script>
+</div>
+
+</body>
+</html>
