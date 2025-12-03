@@ -5,65 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Wealth BluePrint</title>
 <style>
-  /* Ensure full screen */
   html, body {
     height: 100%;
     margin: 0;
+    background-color: #031C52;
   }
 
   body {
-    position: relative;
-    min-height: 100vh;
-    background-color: #031C52; /* fallback background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: sans-serif;
-  }
-
-  /* Background image layer */
-  body::before {
-    content: '';
-    position: fixed;  /* stays in the back */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('1.jpg'); /* make sure path is correct */
-    background-size: cover;
-    background-position: center center;
+    background-image: url('1.jpg');
     background-repeat: no-repeat;
-    z-index: -1; /* behind everything */
+    background-position: center center;
+    background-size: contain;
   }
 
-  /* Grid container */
   .grid-container {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
-    width: 90vw;          /* responsive width */
-    max-width: 600px;     /* optional max width */
-    aspect-ratio: 1 / 1;  /* keep square grid */
-    gap: 0;               /* no gaps */
-    z-index: 1;           /* above background */
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
   }
 
-  /* Grid cells */
   a.grid-cell {
-    background-color: transparent; /* fully transparent */
+    background-color: rgba(0,0,0,0);
+    border: 0px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    color: transparent; /* hide numbers */
+    color: transparent; /* numbers invisible */
     font-weight: bold;
     user-select: none;
   }
 
   a.grid-cell:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* subtle hover effect */
+    background-color: rgba(0,0,0,0);
+    border-color: #fff;
   }
-
 </style>
 </head>
 <body>
@@ -84,16 +63,16 @@
       67: "https://www.youtube.com/",
       76: "https://www.youtube.com/",
       77: "https://www.youtube.com/",
-      85: "https://chat.whatsapp.com/KmCxE4OPgc5ItS96CVLNQa?mode=hqrc",
+	  85: "https://chat.whatsapp.com/KmCxE4OPgc5ItS96CVLNQa?mode=hqrc",
       86: "https://chat.whatsapp.com/KmCxE4OPgc5ItS96CVLNQa?mode=hqrc",
       95: "https://www.instagram.com/neig_insight/",
       96: "https://www.instagram.com/neig_insight/"
     };
 
-    // Generate 100 grid cells
+    // Generate grid cells
     for (let i = 1; i <= 100; i++) {
       const link = document.createElement('a');
-      link.href = customCells[i] || "#";
+      link.href = customCells[i] || `#`; 
       link.textContent = i;
       link.className = 'grid-cell';
       container.appendChild(link);
