@@ -12,7 +12,7 @@
   }
 
   body {
-    background-image: url('https://github.com/overion/blueprint2/blob/main/1.jpg');
+    background-image: url('1.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: contain;
@@ -68,7 +68,7 @@
     // Generate grid cells
     for (let i = 1; i <= 100; i++) {
       const link = document.createElement('a');
-      link.href = customCells[i] || `https://example.com/${i}`; 
+      link.href = customCells[i] || `#`; 
       link.textContent = i;
       link.className = 'grid-cell';
       container.appendChild(link);
