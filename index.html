@@ -8,14 +8,14 @@
   html, body {
     height: 100%;
     margin: 0;
-    background-color: #000; /* background behind image for letterboxing */
+    background-color: #000;
   }
 
   body {
-    background-image: url('https://github.com/overion/blueprint2/blob/main/1.jpg');
+    background-image: url('1.jpg');
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: contain; /* fit entire image inside viewport */
+    background-size: contain;
   }
 
   .grid-container {
@@ -28,8 +28,8 @@
   }
 
   a.grid-cell {
-    background-color: rgba(0,0,0,0); /* fully transparent */
-    border: 0px solid black; /* fully visible black borders */
+    background-color: rgba(0,0,0,0);
+    border: 0px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,11 +37,10 @@
     color: black;
     font-weight: bold;
     user-select: none;
-    transition: background-color 0.2s, border-color 0.2s;
   }
 
   a.grid-cell:hover {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0,0,0,0);
     border-color: #fff;
   }
 </style>
@@ -51,9 +50,27 @@
 <div class="grid-container" aria-label="Clickable grid">
   <script>
     const container = document.querySelector('.grid-container');
-    for(let i=1; i<=100; i++) {
+
+    // Cells that need custom links
+    const customCells = {
+      4:  "https://your-link.com/a",
+      5:  "https://your-link.com/b",
+      6:  "https://your-link.com/c",
+      7:  "https://your-link.com/d",
+      56: "https://your-link.com/e",
+      57: "https://your-link.com/f",
+      66: "https://your-link.com/g",
+      67: "https://your-link.com/h",
+      76: "https://your-link.com/i",
+      77: "https://your-link.com/j"
+    };
+
+    for(let i = 1; i <= 100; i++) {
       const link = document.createElement('a');
-      link.href = `https://example.com/${i}`;
+
+      // Use custom link if exists, else default
+      link.href = customCells[i] || `https://example.com/${i}`;
+
       link.textContent = i;
       link.className = 'grid-cell';
       container.appendChild(link);
